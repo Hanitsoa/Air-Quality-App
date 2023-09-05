@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.loader {
+    position: absolute;
+    inset: 0;/*reset*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: inherit;/*blanc*/
+    z-index: 1; /*devant les autres*/
+    opacity: 0;
+    visibility: hidden;/*la hauteur est là mais on ne peut plus interagir avec*/
+    transition: 
+        opacity 0.6s ease-out,/*avantage: on peut l'animé, pas comme disolay: none*/ /*effet fondu*/
+        visibility 0.6s ease-out; /*ne plus manipulable car valeur : hidden*/
+}
+.loader.active {
+  visibility: visible;
+  opacity: 1;
+}
+.loader-logo {
+    width: 75px;
+    animation: loader 1.8s ease-out infinite;
+}
+@keyframes loader {
+    50% {
+        transform: rotate(360deg);
+    }
+}
+.emoji-logo {
+    width: 75px;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    color: #111;
+    position: relative; /*pour le Layer qu'on mettra dessus*/
+    background-image: linear-gradient(45deg, #4ba0d9, #6dd5fa, #fff);
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards; /*apparition du body qd la apge est chargée*/
+  }
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+.background-layer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* background-color: red; */
+}
+.app-container {
+    padding: 50px 10px 0;/*50top 10 côtés 0bottom*/
+}
+  h1 {
+    font-family: roboto, sans-serif;
+    text-align: center;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    color: #f1f1f1;
+    font-size: 72px;
+    text-shadow:   
+        1px 1px 0 #333,
+        2px 2px 0 #3a3a3a,
+        3px 3px 0 #575757,
+        4px 4px 0 #6b6b6b;
+  }
+  .information-block {
+    max-width: 500px;
+    margin: 0 auto; /*pour centré*/
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 25px 25px 50px; /*haut (gauche-droite) bas*/
+    position: relative; /*pour les enfant en Absolute*/
+    box-shadow: 0 5px 5px rgba(0,0,0,0.3);
+    /* valeur x y flou couleur avec opacity 0.3 */
+  }
+.emoji-logo {
+    display: block;
+    margin: 0 auto 10px;
+    filter: drop-shadow(2px 2px 1px #515151);
+}
+.user-information {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-family: roboto, sans-serif;
+    font-weight: 600;
+}
+table {
+    border: 1px solid black;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    margin-bottom: 30px;
+}
+.label, .city-name, .polution-info, .polution-value {
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 18px;
+}
+.scale-bar-text {
+    font-size: 17px;
+    font-family: roboto, sans-serif;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.scale-section {
+    height: 10px;
+    flex-grow: 1;
+    background-color: red;
+}
+.scale-section:not(:last-child) {
+    border-right: 2px solid white;
+}
+.scale-container {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+.location-pointer {
+    position: absolute;
+    transform: rotate(180deg);
+    top: 15px;
+    width: 30px;
+    left: -15px;
+}
+.scale-section:nth-child(2) {
+    background-color: green;
+}
+.scale-section:nth-child(3) {
+    background-color: #d7d703;
+}
+.scale-section:nth-child(4) {
+    background-color: orange;
+}
+.scale-section:nth-child(5) {
+    background-color: red;
+}
+.scale-section:nth-child(6) {
+    background-color: purple;
+    flex-grow: 2;
+}
+.scale-section:nth-child(7) {
+    background-color: maroon;
+    flex-grow: 4;
+}
